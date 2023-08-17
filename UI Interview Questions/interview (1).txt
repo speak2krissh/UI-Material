@@ -1,0 +1,282 @@
+1) How do you improve the performance of a website.
+Performance of the site can be improved in several ways.
+i) code unification :
+Each CSS file must be loaded before the page can be displayed in an internet browser.
+This causes an increase in the time to load the page. This will adversely affect the site performance. So it’s best to unify multiple CSS files into a single CSS file.
+
+ii) compress css and javascript files:
+We can compress a CSS file by removing unnecessary spaces, comments, or other
+unnecessary indents to reduce the file size. We can also use an online tool to compress large CSS files.
+Some examples are
+-> CSS Minifier
+-> Online version of the YUI Compressor for CSS/Javascript
+-> CSS Compressor
+
+iii) Using sprite images instead of multiple images. Sprite image is a collection of images
+put together in a single image file. Respective image can be called using css background position property
+
+iv) Always put javascripts at the bottom of the page.
+
+2) What is bootstrap ? 
+Bootstrap is CSS framework for developing responsive, mobile first projects on the web. Current version of bootstrap is v3.3.6.  Bootstrap also comes with two preprocessors: less and saas.
+
+Bootstrap uses 12 column grid system. Bootstrap’s grid system is responsive, and the columns will re-arrange depending on the screen size
+
+3) What new features has been added in bootstrap 3?
+Bootstrap 3 has following new features:
+i) New Glyphicons icon font!
+ii) Smallest file size.
+iii) New grid system.
+iv) its uses CSS compressors (Less/Saas)
+
+4) Difference between container and container-fluid in bootstrap?
+.container has a max width pixel value, whereas .container-fluid is max-width 100%.
+.container-fluid continuously resizes as you change the width of your window/browser by any amount.
+.container resizes in chunks at several certain widths, controlled by media queries (technically we can say it’s “fixed width”
+because pixels values are specified, but if you stop there, people may get the
+impression that it can’t change size – i.e. not responsive.)
+
+5) Tell me latest jquery version ?
+Latest version of jquery is : jQuery Core 2.1.1 (IE < 9 is not supported)
+
+6) Difference between html5 tag and normal tag ?
+
+HTML5 tag are called as semantic tags. A semantic element clearly describes its meaning to both the browser and the developer. Using semantic tags you could provide better structure in your document, and provide contextually rich information to robots, page readers, and potentially, search engines. Some of the sematic tags are given below.
+<article>
+<aside>
+<details>
+<figcaption>
+<figure>
+<footer>
+<header>
+<main>
+<mark>
+<nav>
+<section>
+<summary>
+<time>
+Non-semantic elements tells nothing about its content.
+
+7) List out Some HTML5 tags?
+<footer>
+<header>
+<section>
+<main>
+<mark>
+<nav>
+<cite>
+<figure>
+
+8) Difference between live and bind function in jquery. 
+The bind() method attaches one or more event handlers for selected elements, and specifies a function to run when the event occurs.
+As of jQuery version 1.7, the on() method is the preferred method for attaching event handlers for selected elements.
+The live() method was deprecated in jQuery version 1.7, and removed in version 1.9. Use the on() method instead.
+
+9) Does Internet Explorer 8 support HTML 5? 
+In IE versions prior to 9, unknown HTML elements would be parsed as empty elements.
+You can use this IEHTML5 shim script to gain a basic level of support for the new semantic elements in HTML5. html5shiv exploits another quirk of IE to work around this bug: calling document.createElement(“tagname”) for each of the new HTML5 elements, which causes IE to parse them correctly.
+
+10) Some new fautures of css3? 
+i) border-radius
+Eg :
+div {
+border-radius: 25px;
+border: 2px solid;
+}
+
+ii) box-shadow
+
+ .box_shadow{
+background-color: #EEEEEE;
+box-shadow:3px 3px 3px 2px #797979;
+height: 50px;
+width: 100px;
+}
+
+iii) Text Shadow
+a { text-shadow: #aaa 2px 2px 2px; }
+
+iv) Multiple Backgrounds
+Using this property we can use multiple background images. Syntax as follows
+
+1
+2
+3
+4
+.container {
+background: url(image/bg1.png) 0 0 no-repeat,
+ url(image/bg2.png) 100% 0 no-repeat;
+}
+We don’t have support for older versions of IE browser. We need to provide a fallback for the browsers which don’t provide support for multiple backgrounds.
+
+1
+2
+3
+4
+5
+6
+7
+8
+.container {
+/* fallback */
+background: url(image/bg1.png) no-repeat;
+  
+/* modern browsers */
+background: url(image/bg1.png) 0 0 no-repeat,
+ url(image/bg2.png) 100% 0 no-repeat;
+}
+v) Transition
+We can add animation to an element using transition. We need to specify these parameters.
+transition-property
+transition-duration
+transition-timing-function
+transition-delay
+
+Below code will animate the height of element.
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+div {
+    width: 150px;
+    height: 150px;
+    background: red;
+    /* For Safari 3.1 to 6.0 */
+    -webkit-transition-property: height;
+    -webkit-transition-duration: 2s;
+    -webkit-transition-timing-function: ease-in-out;
+    -webkit-transition-delay: 1s;
+    /* Standard syntax */
+    transition-property: height;
+    transition-duration: 2s;
+    transition-timing-function: linear;
+    transition-delay: 1s;
+}
+ 
+div:hover {
+    height: 300px;
+}
+11) what is closest in jquery ? What’s the difference between .closest() and .parents(‘selector’)?
+.closest() method begins its search with the element itself before progressing up the DOM tree, and stops when current element matches the selector.
+.parents() Begins with the parent element, get the parent of each element in the current set of matched elements
+
+12) What is json?
+JSON stands for JavaScript Object Notation. JSON is language independent, lightweight data interchange format. JSON data is written as key value pairs.
+Eg :”name”:”Vandana”
+
+13) Explain position property in css? 
+The CSS positioning properties allow you to position an element. There are four different positioning methods: Static, Fixed, relative, absolute.
+
+14) Difference between $(this) and this in jquery?
+Keyword ‘this’ is a native DOM element. $(this) is a jQuery object that allows you to call functions such as .addClass() on it.
+
+15) Will HTML5 canvas supported in IE ? 
+HTML5 canvas is not supported in IE version less than 9.
+ExplorerCanvas(excanvas) a JS library is the option to render HTML5 canvas for IE6, 7, and 8.
+
+16) what is jsonp?
+JSONP is nothing but JSON with padding. JSONP is mostly used in RESTFull APIs(Cross domain request). JSONP is a simple trick to overcome XMLHttpRequest same domain policy. (As you know one cannot send AJAX (XMLHttpRequest) request to a different domain.). JSONP request appends the callback function with URL.
+
+Eg: http://www.abcs.com/example.php?callback=simplecallback
+
+Whenever the server receives the callback it will return the data. The data can be accessed using that call back function.
+A simple implementation of JSONP request.
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+<script type="text/javascript">// <![CDATA[
+<span class="mceItemHidden" data-mce-bogus="1">
+(function() {
+var <span class="hiddenSpellError" pre="var " data-mce-bogus="1">flickerAPI</span> = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+$.<span class="hiddenSpellError" pre="" data-mce-bogus="1">getJSON</span>( <span class="hiddenSpellError" pre="" data-mce-bogus="1">flickerAPI</span>, {
+tags: "mount rainier",
+<span class="hiddenSpellError" pre="" data-mce-bogus="1">tagmode</span>: "any",
+format: "json"
+})
+.done(function( data ) {
+$.each( data.items, function( <span class="hiddenGrammarError" pre="" data-mce-bogus="1">i</span>, item ) {
+$( "<img>" ).<span class="hiddenSpellError" pre="" data-mce-bogus="1">attr</span>( "<span class="hiddenSpellError" pre="" data-mce-bogus="1">src</span>", item.media.m ).<span class="hiddenSpellError" pre="" data-mce-bogus="1">appendTo</span>( "#images" );
+if ( i === 3 ) {
+return false;
+}
+});
+});
+})();
+</span>
+// ]]></script>
+17) How do you create a simple plugin in jquery?
+Sample plugin creation code is given below:
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+(function($){
+        $.fn.showLinkLocation = function() {
+            return this.filter('a').each(function(){
+                $(this).append(
+                    ' (' + $(this).attr('href') + ')'
+                );
+            });
+        };
+    }(jQuery));
+      
+    // Usage example:
+    $('a').showLinkLocation();
+18) List out some CSS Frameworks for creating responsive templates? 
+Bootstrap
+-> Bootstrap is mobile first framework. It includes predefined classes for easy layout options, as well as powerful mixins for generating more semantic layouts.
+
+Foundation 3
+-> Foundation 3 is built with Sass, a powerful CSS preprocessor. “Pricing Tables” is an interesting componenet in foundation 3. Pricing tables are suitable for marketing site for a subscription-based product. It also offers super cool features like Right-to-left text direction support.
+
+Skeleton 
+Skeleton is a small collection of CSS files that can help to rapidly develop sites that look beautiful at any size, be it a 17? laptop screen or an iPhone.
+
+YAML 4 
+YAML 4 is built on SAAS. You can check the documentation in the above link.
+
+ResponsiveAeon 
+Responsive Aeon is a simple, fast, Intuitive css framework. It contains almost 120 lines of code and only 1kb minified.
