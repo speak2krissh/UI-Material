@@ -1,0 +1,629 @@
+Skip to content
+Product
+Solutions
+Open Source
+Pricing
+Search
+Sign in
+Sign up
+arunprabu
+/
+react-course-batch2-apr2023
+Public
+Code
+Issues
+Pull requests
+Actions
+Projects
+Security
+Insights
+react-course-batch2-apr2023/prime-video-app-apr2023/Reference.txt
+@arunprabu
+arunprabu updated
+Latest commit be9a5db 2 hours ago
+ History
+ 1 contributor
+572 lines (441 sloc)  13.3 KB
+ 
+
+Browser
+---
+  1. HTML Renderer 
+  2. CSS Parser 
+  3. JS Engine 
+
+Webapps 
+----
+  1. Server Side Rendering Apps (SSR) / Traditional Webapps 
+      * Pages will Refresh 
+
+      Arch 
+      ----
+        1 Server -- PORT 8080 -- localhost:8080
+        Response: HTML, CSS, JS + Data
+
+      Codebase 
+      -----
+        HTML, CSS, JS + Back End + DB Queries 
+
+      Adv 
+      ----
+        
+      Disadv
+      -----
+        1. Server has to do the heavy-lifting of going thru html, css, js 
+        2. Slower Webapps 
+        3. Higher Bandwidth consumption
+        4. Expensive 
+        5. Offers Bad User Experience
+
+  2. Client Side Rendering Apps (CSR) / Modern Webapps 
+      * Pages will NOT Refresh 
+
+      CSR = SPA + RESTful API 
+
+      Arch 
+      ----
+        2 Servers 
+          1 Front End App  -- Port 3000  -- localhost:3000 (end-user facing)
+            Response: HTML, CSS, JS, (Wait for data in JSON)
+
+          1 Back End App -- Port 8080  --- localhost:8080 
+            Response: Data (JSON)
+
+      Codebase 
+      -----
+        1 Front End App a.k.a Single Page Apps (SPA)
+          HTML, CSS, JS  
+
+        1 Back End App a.k.a RESTful API 
+          Back End + DB Query 
+
+      Adv
+      ----
+        1. Workload is shared between two servers and also client 
+        2. Faster Webapps 
+        3. Lesser Bandwidth consumption
+        4. Not Expensive 
+        5. Offers Better User Experience
+
+      Disadv
+      -----
+      
+
+Single Page App (SPA) Characteristics (7)
+---------------
+  1. Pages should Not Refresh [DONE]
+  2. URL should be changed [DONE]
+  3. History should be maintained without Page Refresh [DONE]
+  4. Header and Footer should be intact. [DONE]
+  5. The section in between header and footer should be updated [DONE]
+  6. Active Menu should be set [TODO]
+  7. Page Title should also be changed [TODO]
+      Refer: learn about react-helmet package 
+
+  SPA Frameworks / Libraries 
+  ---------------------------
+    #1 React JS (Library) 
+    #2 VueJS (Framework)
+    #3 Angular (Framework)
+
+==========
+
+
+Naming Conventions & Casing 
+----
+  Casing Types 
+  --------
+    1. PascalCase 
+        * Recommended for Object Oriented Program's classes 
+        * also Recommended for Interface in Java & TypeScript 
+        * Recommended for React Components and the folder of Components
+
+        examples 
+        ---
+          class CarDetails {
+
+          }
+
+          interface Employee {
+
+          }
+
+    2. camelCase 
+        * Recommended for variables, const, functions, methods in JS & TS 
+        * Recommended for id's of html elements 
+        * Recommended for variables, const, fn, methods, event handlers of React Component
+        
+        examples 
+        -----
+          var myCar = 'BMW';
+          var isLoggedIn = true;
+
+          function getCarInfo() {
+            //....
+          }
+    
+    3. kebab-case
+        * Recommended for URLs 
+        * Recommended for file names, folder names, assets in front end projects  
+        * Recommended for css classes 
+        * okay for id's of html elements if your architect says ok
+
+        examples 
+        -----
+          btn-primary
+          slideshow-container 
+          youtube-logo.png 
+
+    4. snake_case 
+        * never ever use this. 
+        * okay for const in JS & TS if architect accepts
+
+        examples
+        ---
+          const MAX_STUDENTS_PER_CLASS = 30;
+
+----------------
+
+Thinking in React
+----------
+  0. Find out the number of components 
+  1. Break the UI into component hierarchy 
+  2. ...
+  3. ...
+  
+
+Components
+----------
+  1. Functional Components  (shared components should be created in src/components/)
+      * Coded with JS functions 
+      * were called as Dumb components / presentational components / stateless components (before 2019 - react v16.8)
+      * after 2019 -- no longer called as dumb/presentational/stateless 
+      * from react v 16.8 -- we can have fn components -- via hooks concepts
+
+      1.1 Functional Component with Named Function [DONE]
+      1.2 Functional Component with Anonymous Function [DONE]
+      1.3 Functional Component with Arrow Function [DONE] [RECOMMENDED]
+
+  2. Class Components  (shared components  should be created in src/containers/)
+      * code as JS class but it must extend React Component class 
+      * were called as Smart Components / containers / stateful components (before 2019 - react v16.8)
+      * after 2019 -- no longer called as smart/stateful -- because both type of comp can have state 
+      * can have LifeCycle hooks / methods
+
+
+Project Structure
+-----------
+  src/
+    components/
+      Header/
+        Header.js
+        Header.css 
+        Header.test.js 
+      Footer/
+        Footer.js 
+        Footer.css  
+        Footer.test.js 
+      MenuList/
+        MenuList.js 
+        MenuList.css 
+        MenuList.test.js 
+    containers/
+      shared/
+        ErrorBoundary
+    pages/       (or features/)
+      HomePage/
+        LatestVideo/  
+          LatestVideo.js
+        TrendingVideoList/
+          TrendingVideoList.js 
+        RecommendedVideoList/
+          RecommendedVideoList.js
+        Subscription/
+          Subscription.js 
+        HomePage.js 
+      AboutPage/
+      HocDemoPage/
+      ContactUsPage/
+    hoc/
+
+
+JSX Limitations
+---
+  * will look like HTML but not HTML
+  * You can use all html tags. But tags must be closed. 
+  * class attribute should become className
+  
+
+Integrating Third party packages / tools 
+----------
+
+
+Data Binding 
+----
+  * keep the data in comp and display it in JSX 
+  1. One Way Binding [DONE]
+      keep the data in a variable in comp's JS and display it in JSX 
+  
+  2. Two Way Binding 
+      have the data in a variable,  display it in JSX and 
+      update the variable's data and see the changes in JSX 
+
+Sharing the data between components a.k.a Cross Component Communication
+------
+  1. Parent to Child Component Communication [DONE]
+      using Props
+
+  2. Child to Parent Component Communication [TODO]
+      Using Props with callback function and event
+
+  3. Any to Any Component Communication
+      3.1 Using React Context API (or) [after the year 2019 - ReactJS v 16.8]
+      3.2 Using ReduxJS / Flux / MobX
+
+Styling in React
+--
+  1. External Styles [DONE]
+      * External styles from third party (ex: bootstrap)
+      * Our own External css files 
+  2. Inline Styles [DONE]
+  3. Internal Styles [DONE]
+
+Routing 
+---
+  Step 1: 
+  ---
+    npm i react-router-dom 
+
+  Step 2: 
+  ---
+    Identify the URL's for the Menus of the app 
+
+    Home           http://localhost:3000/
+    About Us       http://localhost:3000/about-us
+    Contact Us     http://localhost:3000/contact-us
+
+  Step 3: 
+  ----
+    Identify the matching component for the URLs 
+
+    http://localhost:3000/              --- HomePage 
+    http://localhost:3000/about-us      --- AboutUsPage 
+    http://localhost:3000/contact-us    --- ContactUsPage 
+
+  Step 4:
+  ---
+    Setting up Menu in MenuList.js 
+
+  Step 5:
+  ---
+    Let's config the routing in App.js 
+
+
+=========================
+
+
+Types of Languages by Data Typing 
+---
+  1. Strictly-Typed Languages / Strongly-Typed Languages
+      Examples: Java, C# 
+      ----
+        String myName = "Arun"; // valid 
+        myName = "John"; // valid
+        myName = true; // compilation error
+
+  2. Loosely-Typed Languages / Dynamically-Typed Languages
+      Examples: JavaScript, PHP, Python 
+      ----
+        var myName = "Arun"; // valid 
+        myName = 1000; // valid 
+        myName = true; // valid 
+        myName = []; // valid  
+        myName = {}; // valid 
+        myName = undefined; // valid 
+        myName = null; // valid 
+
+======
+Static Type Checking in ReactJS 
+--------
+  1. TypeScript 
+  2. FlowJS 
+  3. PropTypes 
+      npm i prop-types 
+
+
+
+How to Setup ESLint and also prettier?
+=========
+  Step 1:   
+    npm i eslint --save-dev 
+  
+  Step 2: 
+    try the following command 
+      npx eslint --init 
+      or 
+      You can also run this command directly using 'npm init @eslint/config'.
+
+    to create .eslintrc.json 
+  
+  Step 3:
+  --
+    we can setup the rules or inherit from standard rules
+
+  Step 4: 
+  --
+    we can setup prettier now
+
+    create .prettierrc.json in root folder of our project
+    and have the following rules 
+
+    {
+      "singleQuote": true,
+      "trailingComma": "none"
+    }
+
+-----------------------------
+.eslintrc.json add below to remove test linting error.
+	4:1  error  'test' is not defined    no-undef
+      7:3  error  'expect' is not defined  no-undef
+-------------------------------------------------------
+  "jest":true
+
+ Warning: React version not specified in eslint-plugin-react settings. See https://github.com/jsx-eslint/eslint-plugin-react#configuration .
+
+To Fix : add Below in .eslintrc.json 
+ "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+
+
+----
+Hooks 
+---
+  React before 2019 (before v 16.8)
+    * fn comp did not have state
+    * fn comp did not have life cycle hooks
+    * Any to Any comp commn was not possible 
+
+  React after 2019 (from react v16.8)
+    * fn comp can have state
+    * fn comp can have life cycle hooks kind of alternatives
+    * Any to Any comp commn has become possible 
+
+
+
+---
+useContext() Hook
+Let's us share data across components 
+
+Step 1: create context with any data or even null inside 
+Refer: PageContext.js 
+
+Step 2: Provide the data to the list of components you want to share 
+Check App.js 
+
+Step 3: Using <PageContext.Provider> to share the data across the few components 
+
+Step 4: Consume it in both Home.js and ContactUs.js 
+  ----
+
+
+
+
+Concepts
+---
+  data binding [DONE]
+    variables 
+
+  props [DONE]
+  states [DONE]
+  events  [DONE]
+  lists and keys [DONE]
+  conditionals [DONE]
+
+  Styles [DONE]
+  Routing[DONE]
+  LifeCycle Hooks [DONE]
+  Two Way Binding [DONE]
+  
+  Adv react concepts [4-5 hours]
+    Fragments [DONE]
+    StrictMode [DONE]
+    Error Boundary [DONE]
+    HOC [DONE]
+    Todos 
+
+    Static Type Checking [DONE]
+    Typechecking With PropTypes [DONE]
+    Linting Setup [DONE]
+    Debugging [DONE]
+
+  Hooks [12 hours]
+    useState [DONE]
+    useEffect [DONE]
+    useRef [DONE]
+    useReducer [DONE]
+    useId [DONE]
+    useContext [DONE]
+    Custom Hook [PENDING]
+  
+  AJAX calls using axios [DONE]
+  forms in React 
+
+  Nested Routing / Child Routing 
+
+
+React does't have tools for 
+----
+  1. Routing (so, use react-router-dom)
+  2. Static Type Checking (so, use prop-types or Typescript)
+  3. Client tool REST API Calls (so, use axios or fetch)
+  4. Forms and Validations (so, use react-hook-form [RECOMMENDED] or formik )
+-----
+
+  Unit Testing [16-20 hours]
+  custom hooks
+  Build and Deployement [~5 hour]
+    Code-Splitting
+    Lazy Loading and Suspense
+    performance tuning tips
+  and many more...
+
+  Redux 
+
+
+
+Project: Calc 
+---
+  Analysis 
+    Design 
+      Development 
+        Testing 
+          Deployment 
+            Maintanance 
+
+Dev => QA => (bugs) => Dev => QA => (bugs) => Dev => QA => (bugs) => Dev => QA => (QA Passed) => Deployment 
+
+Development
+-----
+  Sources: FRD, HLD, LLD, Designs, Style guide 
+  -------
+  Prepare Test Cases: 
+  ----  
+    1. add should take numbers as inputs 
+    2. add should return only number as output 
+    3. if wrong inputs entered add button should be disabled 
+    4. add button should have + icon
+
+  feature: add 
+  -------
+    function add(a, b) {
+      if(typeof a === number && typeof b === number) {
+        return a + b;
+      }
+    }
+    add(10, 20);  // 30
+
+  Setup Tools to test our app. 
+
+
+----
+
+Modern Sofware Dev Approaches 
+----
+  1. Test-Driven Development (TDD) -- TO LEARN 
+      * Write NEW CODE only if automated test fails 
+
+      Dev Writes Test cases => (FAILURE) => Dev Writes Functionality => (SUCCESS) => [CODE COMPLETE]
+    
+      Test Pattern: AAA (Arrange, Act, Assert)
+      Tools: JEST JS
+
+  2. Behaviour-Driven Development (BDD)
+      * an agile s/w methodology 
+      * app is documented, designed around the behavior the end user wants to experience when 
+        interacting with the app. 
+
+      Dev writes Test Cases around the behavior of the app => (FAILURE) => Dev Writes Functionality => (SUCCESS) => [CODE COMPLETE]
+
+      Test Pattern: Given/When/Then 
+      Tools: Jasmine JS 
+
+Automated Testing 
+-----
+  Levels 
+  ---
+    0. Static Type Checking [DONE]
+        Tools: TypeScrip or Flow JS or Prop-Types 
+
+    1. Unit Testing - TO LEARN 
+        * Testing tiny, independent unit of our code
+        * Testing the component in isolation (Without connecting to the REST API)
+        * Bug Reduction Density: 40-80% 
+
+        Tools: 
+        ----
+          JEST JS (Unit Testing Framework + Test Runner)
+          React Testing Library - RTL (DOM Querying Utility)
+
+    2. Integration Testing 
+        * Testing components by integrating them together
+        * Testing the component with REST API Calls
+
+        Tools: 
+        ----
+          JEST JS (Unit Testing Framework + Test Runner)
+          React Testing Library - RTL (DOM Querying Utility)
+
+    3. End to End (E2E) Testing 
+        * Testing the whole app as one entity.
+        * Will be done by QA team members. 
+
+        Tools: 
+        ----
+          * Selenium 
+          * CypressJS 
+          * Protractor 
+          * Playwright 
+
+
+=====
+
+
+To Learn 
+---
+  1. How to write test cases?
+  2. Where to write test cases? 
+  3. How to test the app by tools? 
+
+Unit Testing Topics 
+==================
+  0. File walkthru [DONE]
+  1. Testing JSX Elements 
+      * getByText [DONE]
+      * getByTestId [DONE]
+      * getByPlaceholderText [DONE]
+      * ... 
+  2. Testing Props [DONE]
+  3. Testing inline CSS [DONE]
+  4. Testing External CSS (CSS class) [TODO]
+  5. Testing Events & States [DONE]
+  6. Testing Events with Buttons [TODO / WILL EXPLAIN]
+  7. Snapshot Testing 
+  8. Testing Forms 
+      Ref: ContactUsPage.js and ContactUsPage.test.js 
+      Validate the form 
+
+  9. Testing REST API Calls 
+      * with mocks 
+        1. using fetch 
+        2. using axios [TODO]
+      * with spies 
+      * negative test 
+  10. Testing Routing [TODO]
+  11. Setup and Tear Down 
+  12. Code Coverage 
+  
+  Explain custom hooks
+
+
+
+
+Footer
+© 2023 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+react-course-batch2-apr2023/prime-video-app-apr2023/Reference.txt at master · arunprabu/react-course-batch2-apr2023 · GitHub
