@@ -1,0 +1,3087 @@
+program-1 : Functional Component
+**************************
+import React from 'react';
+function Greet() {
+    const greeting = 'Hello Functional Component!';
+    return <h1>{greeting}</h1>;
+}
+export default Greet;
+--------
+import React from 'react';
+import './App.css';
+import Greet from './greet/greet';
+
+class App extends React.Component {
+    render() {
+        return (
+            <div>
+                <Greet />
+            </div>
+        );
+    }
+}
+export default App;
+
+
+program-2: React Without JSX
+****************************
+import React from 'react';
+
+class Header extends React.Component {
+    render() {
+        //return React.createElement('h1', null, 'Hellooooo'); //One element
+        const title = React.createElement('h1', {}, 'My First React Code');
+        const paragraph = React.createElement('p', {}, 'Writing some more HTML. Cool stuff!');
+        const container = React.createElement('div', {}, [title, paragraph]);
+        return container;
+    }
+}
+export default Header;
+
+
+
+program-3 : Nested Component
+**************************
+import React from 'react';
+class Header extends React.Component {
+   render() {
+      return (
+         <h1>This is My Header</h1>
+      );
+   }
+}
+export default Header;
+-----------------
+import React from 'react';
+import Header from './header/header.js';
+class App extends React.Component {
+   render() {
+      return (
+         <div>
+            <Header/>
+            <h2>Content</h2>
+            <p>This is the content!!!</p>
+         </div>
+      );
+   }
+}
+export default App;
+
+
+
+Program-4:  Fragments
+*********************
+import React from 'react';
+class Header extends React.Component {
+    render() {
+        return (
+            <React.Fragment>
+                <div>I am an element!</div>
+                <button>I am another element</button>
+            </React.Fragment>
+        );
+    }
+}
+export default Header;
+		(OR)
+// Deconstructed
+import React, { Component, Fragment } from 'react';
+class MyComponent extends Component {
+  render(){
+    return (
+      <Fragment>
+        <div>I am an element!</div>
+        <button>I am another element</button>
+      </Fragment>
+    );
+  }
+}
+export default MyComponent;
+
+
+
+program-5: Expression
+**********************
+import React from 'react';
+class App extends React.Component {
+   render() {
+		function formatName(user) {
+            return user.firstName + ' ' + user.lastName;
+        }
+        let user = {
+            firstName: 'sanjay',
+            lastName: 'samantra'
+        };
+      return (
+          <div>  
+				<h2>React Version is {React.version}</h2>
+                <h2>{1 + 1}</h2>
+                <h2>my name is- {user.firstName}</h2>
+                <h2>my full name is- {formatName(user)}</h2>
+           </div>
+      );
+   }
+}
+export default App;
+
+
+
+program-6 display Image
+*************************
+1. place the image inside 'public' folder
+2. use it in HTML file
+   <img src='images/sachin.jpg' />   
+		(OR)
+1. import sachin from './sachin.jpg'
+2. <img src={sachin} />
+
+
+
+
+program-7 : CSS
+***************
+import React from 'react';
+class App extends React.Component {
+   render() {
+	  var myStyle={
+			color:'blue',
+			backgroundColor:'yellow',
+			border:'5px solid green'
+	  }
+      return (
+         <div>
+            Hello World!!!
+			<p style={{color:'red',fontSize:'42px'}}>this is paragraph</p>
+			<div style={myStyle}>this is a div</div>
+         </div>
+      );
+   }
+}
+export default App;
+
+
+program-8 CSS Modules
+*********************
+DashedBox.module.css
+-------------------
+.container {
+   margin: 40px;
+   border: 5px dashed pink;
+}
+.content {
+   font-size: 15px;
+   text-align: center;
+ }
+ .error{
+  color:red;
+}
+-------------
+DashedBox2.css
+--------------
+.error{
+	background-color:yellow;
+}
+
+-------------
+import React from 'react';
+import styles from './DashedBox.module.css';
+import './DashedBox2.css';
+
+const DashedBox = () => (
+    <div className={styles.container}>
+    <p className={styles.content}>Get started with CSS Modules style</p>
+	<div className={styles.error}>this is a div</div>
+  </div>
+);
+export default DashedBox;
+ 
+
+program-9 : External CSS
+************************
+mystyles.css
+-------------
+.mybutton {
+    background: red;
+    border-radius: 8px;
+    color: white;
+    padding: 10px 50px;
+  }
+-------
+
+import React from 'react';
+import './mystyles.css';
+
+class Externalcss extends React.Component {
+      render() {
+            return (
+                  <div>
+                        <button className="mybutton">test</button>
+                        <div className='mydiv'>This is a div</div>
+                        <span id='myspan'>this is a span</span>
+                  </div>
+            );
+      }
+}
+export default Externalcss;
+
+
+Program-10 use Bootstrap
+***********************
+1. install bootstrap
+	npm i -s bootstrap@3.3.7  (particular version)
+	       (OR)
+	npm i bootstrap			(latest version)
+	
+2. add to index.js file
+   import 'bootstrap/dist/css/bootstrap.min.css';
+   
+   
+   
+program-11 : Conditional Operator
+*********************************
+import React from 'react';
+
+class Conditional extends React.Component {
+    render() {
+        let x = 4;
+        return (
+            <h1>{x % 2 == 0 ? `${x} is Even` : `${x} is odd`}</h1>
+        )
+    }
+}
+export default Conditional;
+
+
+
+Program-12 : if else
+*******************
+import React from 'react';
+
+class Conditional extends React.Component {
+    render() {
+        let x = prompt("enter a number")
+        if(x%2==0){
+            return ( <h2>{x} is even</h2> )
+        }
+        else{
+            return ( <h2>{x} is odd</h2> )
+        }     
+    }
+}
+export default Conditional;
+
+
+
+Program-13 if else
+*****************
+import React, { Component } from 'react'
+export default class Conditional extends Component {
+    render() {
+        let x = 5;
+        function f1() {
+            return <div>
+                <h2>Hiiiii</h2>
+                <h2>Hiiiii-2</h2>
+                <h2>Hiiiii-3</h2>
+            </div>
+        }
+        if (x % 2 == 0) {
+            return (
+                <div>
+                    {f1()}
+                    <h2>{x} is even</h2>
+                </div>
+            )
+        }
+        else {
+            return (
+                <div>
+                    {f1()}
+                    <h2>{x} is odd</h2>
+                </div>
+            )
+        }
+    }
+}
+
+
+
+
+program-14 List of items
+************************
+import React from 'react';
+class List extends React.Component {
+    render() {
+        let cars = ['tata', 'honda', 'maruti', 'hundai', 'toyota']
+        return (
+            cars.map((car, ind) => {
+                return <li>{ind} - {car}</li>
+            })
+        )
+    }
+}
+export default List;
+		(OR)
+import React from 'react';
+class List extends React.Component {
+    render() {
+        let cars = ['tata', 'honda', 'maruti', 'hundai', 'toyota'];
+		let carList = cars.map(car => <h2>{car}</h2>)
+        return <div>{carList}</div>
+    }
+}
+export default List;
+
+
+
+program-15 List of Items & condition
+***********************************
+import React, { Component } from 'react'
+
+export default class Demo extends Component {
+    render() {
+        let cars = ['tata', 'honda', 'maruti', 'hundai', 'toyota'];
+        let carList = cars.map((car, ind) => {
+            if (ind % 2 == 0)
+                return <h2>{car}</h2>
+        })
+        return <div>{carList}</div>
+    }
+}
+
+
+
+ 
+program-16 List of Objects
+************************
+import React from 'react';
+
+class EmployeeList extends React.Component {
+    render() {
+        let employees = [
+            { eId: 101, name: "sanjay", sal: 5000 },
+            { eId: 104, name: "deepak", sal: 8000 },
+            { eId: 103, name: "ranjan", sal: 7000 },
+            { eId: 102, name: "manoj", sal: 9000 }
+        ]
+        return 
+            <table border='1' align='center' width='50%'>
+                {employees.map(item => (
+                    <tr key={emp.eId}>
+                        <td>{item.eId}</td>
+                        <td>{item.name}</td>
+                        <td>{item.sal}</td>
+                    </tr>
+                ))}
+            </table>
+        )
+    }
+}
+export default EmployeeList;
+
+-------------------(OR)--------------------------------------
+
+import React, { Component } from 'react';
+
+export default class Demo extends Component {
+    render() {
+        let employees = [
+            { eId: 101, name: "sanjay", sal: 5000 },
+            { eId: 104, name: "deepak", sal: 8000 },
+            { eId: 103, name: "ranjan", sal: 7000 },
+            { eId: 102, name: "manoj", sal: 9000 }
+        ]
+        const empRows = [];
+        for (let emp of employees) {
+            const row = (
+                <tr key={emp.eId}>
+                    <td>{emp.eId}</td>
+                    <td>{emp.name}</td>
+                    <td>{emp.sal}</td>
+                </tr>
+            );
+            empRows.push(row);
+        }
+        return (
+            <table className='table table-bordered table-striped'>
+                <thead>
+                    <tr>
+                        <th>Emp Id</th>
+                        <th>Name</th>
+                        <th>Salary</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {empRows}
+                </tbody>
+            </table>
+        );
+    }
+}
+
+
+
+
+		
+Program-17 productList & Product
+*******************************
+import React, { Component } from 'react'
+import Product from './product'
+export default class Productlist extends Component {
+    productList = [
+	       {pId:101, name:'iphone' , price:5000},
+		   {pId:101, name:'iphone' , price:5000},
+		   {pId:101, name:'iphone' , price:5000},
+        ]
+    render() {
+        return (
+            <div>
+                <h1>This is Product-List Component</h1>
+                {this.productList.map(item => (
+                    <Product product={item} />
+                ))}
+            </div>
+        )
+    }
+}
+--------------------------------------
+import React, { Component } from 'react';
+import './product.css';
+export default class Product extends Component {
+    render() {
+        return (
+            <div class='product'>
+                {this.props.product.id} <br />
+                {this.props.product.name} <br />
+                {this.props.product.price} <br />
+                <button class='btn btn-success'>Buy Now</button>
+            </div>
+        )
+    }
+}
+
+
+program-18 problem with Local Variables declared inside render()
+*********************************************************
+import React, { Component } from 'react'
+export default class Test extends Component {
+    render() {
+        let count = 0;
+        function increment() {
+            count = count + 1;
+            alert(count);
+        };
+        return (
+            <div>
+                <p>The count is: {count}</p>
+                <button onClick={() => increment()}>Add one</button>
+            </div>
+        );
+    }
+}
+// render() method gets invoked only if there is a change in props/state
+
+
+program-19  Force Update
+************************
+import React, { Component } from 'react'
+export default class Conditional extends Component {
+    count = 0;
+    increment = () => {
+        this.count = this.count + 1;
+        this.forceUpdate();
+    };
+    render() {
+        return (
+            <div>
+                <p>The count is: {this.count}</p>
+                <button onClick={this.increment}>Add one</button>
+            </div>
+        );
+    }
+}
+
+
+
+program-20: Props
+******************
+import React from 'react';
+import Child from '../child/child'
+
+class Parent extends React.Component {
+    render() {
+        let user = { name: 'sachin', age: 35 }
+        return (
+            <div>
+                This is Parent Component
+                <Child name={user.name} age={user.age} />
+            </div>
+        );
+    }
+}
+export default Parent;
+-------------------
+import React from 'react';
+
+class Child extends React.Component {
+    render() {
+        return (
+            <div>
+                <h2>This is child component</h2>
+                <h2>{this.props.name}--{this.props.age}</h2>
+            </div>
+        );
+    }
+}
+export default Child;
+
+
+Program-21  Props De-structuring
+******************************
+import React, { Component } from 'react'
+
+export default class Product extends Component {
+    render() {
+        let { pId, name, price } = this.props.prodObj;
+        return (
+            <div style={{ border: '2px solid red' }}>
+                {pId} <br />
+                {name} <br />
+                {price} <br />
+                <button class='btn btn-success'>Buy Now</button>
+                <h2>the text from my parent comp is {this.props.children}</h2>
+            </div>
+        )
+    }
+}
+
+
+
+
+
+Program-22 propTypes
+*******************
+import React from 'react';
+import { PropTypes } from 'prop-types';
+class Student extends React.Component {
+  
+  render() {
+    return (
+      <div>
+        <p>Student Name: {this.props.name}</p>
+        <p>Age: {this.props.age}</p>
+      </div>
+    );
+  }
+}
+Student.propTypes = {
+  name: PropTypes.string.isRequired,
+  age: PropTypes.number
+};
+export default Student;
+
+
+
+Program-23 Requiring Single Child
+*******************************
+import React from 'react';
+import { PropTypes } from 'prop-types';
+class Container extends React.Component {
+render() {
+    return (
+      <div>
+        {this.props.children}
+      </div>
+    );
+  }
+}
+Container.propTypes = {
+  children: PropTypes.element
+};
+export default Container;
+---------------------------------
+import React from 'react';
+import Container from './Container';
+import Student from './Student';
+class App extends React.Component {
+render() {
+    return (
+      <div>
+        <Container>
+          <Student name="Mark" age="24" />
+          <Student name="Peter" age="25" />
+        </Container>
+      </div>
+    );
+  }
+}
+export default App;
+
+
+
+Program-24: props.children
+**************************
+import React from 'react';
+import Greet from '../greet/greet';
+class Content extends React.Component {
+    render() {
+        return (
+            <div>
+                <Greet>
+                    <p>I am child-1</p>
+                    <p>I am child-2</p>
+                </Greet>
+                <Greet>
+                    <p>I am child-1</p>
+                    <p>I am child-2</p>
+                </Greet>
+            </div>
+        );
+    }
+}
+export default Content;
+-----------------------------
+import React from 'react';
+class Greet extends React.Component {
+    render() {
+        return (
+            <h2>
+                This is Greet Component
+                {this.props.children}
+            </h2>
+
+        );
+    }
+}
+export default Greet;
+
+
+Program-25: Methods as props
+**************************
+import React, { Component } from 'react';
+import Child from '../child/child';
+
+export default class Parent extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            parentName: 'Parentttt'
+        };
+        this.greetParent = this.greetParent.bind(this);
+        this.greetParentWithParam = this.greetParentWithParam.bind(this);
+    }
+    greetParent() {
+        alert(`Hello ${this.state.parentName}`)
+    }
+    greetParentWithParam(data) {
+        alert(`Hello parent with parameter from ${data}`)
+    }
+    render() {
+        return (
+            <div>
+                <Child greetHandler={this.greetParent} greetHandler2={this.greetParentWithParam}/>
+            </div>
+        )
+    }
+}
+-----------------------
+import React from 'react';
+
+class Child extends React.Component {
+    render() {
+        return (
+            <div>
+                <div>I am child component</div>
+                <button onClick={this.props.greetHandler}>Invoke parent Method</button>
+                <button onClick={() => this.props.greetHandler2('childparameter')}>Invoke parent Method</button>
+            </div>
+        );
+    }}
+export default Child;
+
+
+
+Program-26: States
+********************
+class Counter extends React.Component {
+   constructor(props) {
+     super(props);
+     this.state = {count: 0 };
+  }
+  fun1 = () => {
+    this.setState({count: this.state.count + 1});
+  }
+
+  render() {
+    return (
+      <div>
+        <div>count:{this.state.count}</div>
+        <button onClick={this.onClick}>click!</button>
+      </div>
+    );
+  }
+};
+
+
+
+Program-27 setState() in Detail
+*********************************
+import React from 'react';
+class Counter extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            count: 0
+        }
+    }
+    increment() {
+        //this.state.count = this.state.count + 1;
+        //console.log(this.state.count);
+        //UI will not Re-render when we change state directly, setState() should be used
+
+        this.setState({
+            count: this.state.count + 1
+        })
+        console.log(this.state.count);
+        //Calls to setState() is asynchronous,
+        //Console.log() gets executed before setState()
+        
+        this.setState({
+            count: this.state.count + 1
+        },
+        ()=>{
+            console.log('call back '+this.state.count)
+        }
+        )
+
+    }
+    render() {
+        return (
+            <h2>
+                counter works
+                <div>Count - {this.state.count}</div>
+                <button onClick={() => this.increment()}>Increment</button>
+            </h2>
+        );
+    }
+}
+export default Counter;
+
+
+
+Program-28 setState() in Detail-2
+*********************************
+//React may group multiple setState calls in to a single update for better performance
+//when we want to update the state based on the previous State,
+//we need to pass a function as an arguement to setState() instead passing an object
+
+import React from 'react';
+class Counter extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            count: 0
+        }
+    }
+    increment() {
+        this.setState((prevState) => ({
+            count: prevState.count + 1
+        }))
+    }
+    incrementFive() {
+        this.increment();
+        this.increment();
+        this.increment();
+        this.increment();
+        this.increment();
+    }
+    render() {
+        return (
+            <h2>
+                counter works
+                <div>Count - {this.state.count}</div>
+                <button onClick={() => this.incrementFive()}>Increment</button>
+            </h2>
+        );
+    }
+}
+export default Counter;
+
+
+
+
+Program-29 Show/Hide 
+*********************
+import React from 'react';
+class MyClass extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { flag: true };
+    }
+    toggleFlag = () => {
+        this.setState({ flag: !this.state.flag });
+    }
+    render() {
+        return (
+            <div>
+                {this.state.flag ? <div>Hellllllo</div> : null}
+                <button onClick={this.toggleFlag}>
+                    {this.state.flag ? 'HIDE' : 'SHOW'}
+                </button>
+            </div>
+        );
+    }
+}
+export default MyClass;
+--------------------------------------
+import React, { useState } from 'react';
+export default function Demo() {
+    const [flag, toggleFlag] = useState(true);
+    const toggle = function () {
+        toggleFlag(!flag)
+    }
+    return (
+        <div>
+            {flag ? <div>Hellllllo</div> : null}
+            <button onClick={toggle}>
+                {flag ? 'HIDE' : 'SHOW'}
+            </button>
+        </div>
+    )
+}
+
+
+
+
+
+
+Program-30 Show/Hide Password
+*****************************
+import React, { Component } from 'react';
+export default class Test extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            flag: true,
+        }
+    }
+    togglePassword = () => {
+        this.setState({
+            flag: !this.state.flag
+        })
+    }
+    render() {
+
+        return (
+            <div>
+                <input type={this.state.flag ? 'password' : 'text'} />
+                <button onClick={this.togglePassword}>{this.state.flag ? 'Show password' : 'Hide password'}</button>
+            </div>
+        )
+    }
+}
+
+
+
+
+
+
+Program-31 Addition 
+*******************
+import React from 'react';
+
+class Addition extends React.Component {
+    state = {
+        a: 0,
+        b: 0,
+        total: 0
+    }
+    changeFirst = (e) => {
+        this.setState({ a: parseInt(e.target.value) })
+    }
+    changeSecond = (e) => {
+        this.setState({ b: parseInt(e.target.value) })
+    }
+    addition = () => {
+        this.setState({ total: this.state.a + this.state.b })
+    }
+    render() {
+        return (
+            <div>
+                Addition Works!!!
+                <input onKeyUp={this.changeFirst}></input>
+                <input onKeyUp={this.changeSecond}></input>
+
+                <h2>Addition is {this.state.total}</h2>
+                <button onClick={this.addition}>Addddddd</button>
+            </div>
+        );
+    }
+}
+export default Addition;
+----------------------------------------------------
+import React, { useState } from 'react'
+export default function Demo() {
+    const [num1, setnum1] = useState(0);
+    const [num2, setnum2] = useState(0);
+    const [total, settotal] = useState(0);
+
+    return (
+        <div>
+            <div>
+                <input type="number" onKeyUp={(e) => {
+                    setnum1(parseInt(e.target.value));
+                }} />
+                <input type="number" onKeyUp={(e) => {
+                    setnum2(parseInt(e.target.value));
+                }} />
+
+                Addition is: {total}
+
+                <button onClick={(e) => {
+                    settotal(num1 + num2);
+                }}>Get Totaaal</button>
+            </div>
+        </div>
+    );
+}
+
+
+
+
+Program-32  Pure Component
+**************************
+import React, { Component } from 'react'
+import { PureComponent } from 'react';
+
+export default class Demo1 extends PureComponent {
+    state = {
+        name: 'sachin'
+    }
+
+    render() {
+        console.log('Demo1 render called....');
+        setInterval(() => {
+            this.setState({name:'sachin1'})
+        }, 5000)
+        return (
+            <div>
+                This is Demo1 Component {this.state.name}
+            </div>
+        )
+    }
+}
+
+
+
+
+Program-33 Event
+*****************
+class Football extends React.Component {
+  shoot = () => {
+    alert(this);
+    /*
+    The 'this' keyword refers to the component object
+    */
+  }
+  render() {
+    return (
+      <button onClick={this.shoot}>Take the shot!</button>
+	  <button onClick={this.shoot()}>Take the shot!</button> //No
+    );
+  }
+}
+
+		(OR)
+		
+class Football extends React.Component {
+  constructor(props) {
+    super(props)
+    this.shoot = this.shoot.bind(this)
+  }
+  shoot() {
+    alert(this);
+    /*
+    Thanks to the binding in the constructor function,
+    the 'this' keyword now refers to the component object
+    */
+  }
+  render() {
+    return (
+      <button onClick={this.shoot}>Take the shot!</button>
+    );
+  }
+}
+
+
+Program-34 Event with parameter
+***********************************
+class Football extends React.Component {
+  shoot = (a) => {
+    alert(a);
+  }
+  render() {
+    return (
+      <button onClick={() => this.shoot("Goal")}>Take the shot!</button>
+    );
+  }
+}
+
+		(OR)
+class Football extends React.Component {
+  shoot(a) {
+    alert(a);
+  }
+  render() {
+    return (
+      <button onClick={this.shoot.bind(this, "Goal")}>Take the shot!</button>
+    );
+  }
+}	
+
+
+
+
+Program-35 Modal 
+******************
+1. npm i react-modal
+2. add the below code
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Modal from 'react-modal';
+
+class MyComponent extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            modalIsOpen: false
+        };
+    }
+
+    openModal = ()=> {
+        this.setState({ modalIsOpen: true });
+    }
+    closeModal = () => {
+        this.setState({ modalIsOpen: false });
+    }
+
+    render() {
+        return (
+            <div>
+                <button onClick={this.openModal}>Open Modal</button>
+                <Modal
+                    isOpen={this.state.modalIsOpen}
+                    onRequestClose={this.closeModal}
+                    contentLabel="Example Modal"
+                >
+
+                    <button onClick={this.closeModal}>close</button>
+
+                    <h2>I am a Modal</h2>
+                    <div>I am a modal</div>
+
+                </Modal>
+            </div>
+        );
+    }
+}
+export default MyComponent;
+
+
+import React, { useState } from 'react';
+import Modal from 'react-modal';
+
+export default function Test() {
+    const [modalIsOpen, setIsOpen] = React.useState(false);
+
+    function openModal() {
+        setIsOpen(true);
+    }
+    function closeModal() {
+        setIsOpen(false);
+    }
+    return (
+        <div>
+            <button onClick={openModal}>Open Modal</button>
+            <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                contentLabel="Example Modal"
+                shouldCloseOnOverlayClick={false}
+            >
+
+                <button onClick={closeModal}>close</button>
+                <div>I am a modal</div>
+                <div>this is a div</div>
+                <input />
+            </Modal>
+        </div>
+    )
+}
+
+
+
+program-36 Component Communication (child to parent)
+**********************************
+import React, { Component } from 'react';
+import Child from '../child/child'
+
+export default class Parent extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            parentName: 'Parentttt'
+        };
+        this.greetParent = this.greetParent.bind(this);
+        this.greetParentWithParam = this.greetParentWithParam.bind(this);
+    }
+    greetParent() {
+        alert(`Hello ${this.state.parentName}`)
+    }
+    greetParentWithParam(data) {
+        alert(`Hello parent with parameter from ${data}`)
+    }
+    render() {
+        return (
+            <div>
+                I am parent
+                <Child greetHandler={this.greetParent} greetHandler2={this.greetParentWithParam}/>
+            </div>
+        )
+    }
+}
+------------
+import React from 'react';
+
+class Child extends React.Component {
+    render() {
+        return (
+            <div>
+                <div>I am child component</div>
+                <button onClick={this.props.greetHandler}>Invoke parent Method</button>
+                <button onClick={() => this.props.greetHandler2('childparameter')}>Invoke parent Method</button>
+            </div>
+        );
+    }}
+export default Child;
+
+
+
+program-37  Component Communication (child to parent)
+************************************
+import React, { Component } from 'react';
+import Area from './components/Area';
+import Parameter from './components/Parameter';
+ 
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      data: 0,
+      len: 40,
+      bre: 50
+    }
+    this.updateState = this.updateState.bind(this);
+  }
+ 
+  updateState(calculation) {
+    if(calculation == "Area")
+    {
+      this.setState({data: this.state.len * this.state.bre})
+    }
+    else
+    {
+      this.setState({data: 2 * (this.state.len + this.state.bre)})
+    }
+  }
+ 
+  render() {
+    return (
+      <div>
+        Calculation: {this.state.data}
+        <Area update={this.updateState} />
+        <Parameter update={this.updateState} />
+      </div>
+    )
+  }
+}
+ 
+export default App;
+-------------------
+import React, { Component } from 'react';
+ 
+class Area extends Component {
+  render() {
+    return (
+      <div>
+        Area:
+        <button onClick={() => this.props.update('Area')}>
+          Area
+        </button>
+      </div>
+    );
+  }
+} 
+export default Area;
+-----------------------------
+import React, { Component } from 'react'
+
+export default class Perimeter extends Component {
+    render() {
+        return (
+            <div>
+                Perimeter:
+                <button onClick={() => this.props.update('Parameter')}>
+                    Perimeter
+        </button>
+            </div>
+        )
+    }
+}
+
+program-38 without HOC
+**********************
+import React from 'react';
+
+class ClickCounter extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            count: 0
+        }
+    }
+    increment = () => {
+        this.setState(prevState => {
+            return { count: prevState.count + 1 }
+        })
+    }
+
+    render() {
+        const { count } = this.state
+        return (
+            <button onClick={this.increment}>
+                {count}</button>
+        );
+    }
+}
+
+export default ClickCounter;
+
+-------------------------------------------------
+import React from 'react';
+
+class HoverCounter extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            count: 0
+        }
+    }
+    increment = () => {
+        this.setState(prevState => {
+            return { count: prevState.count + 1 }
+        })
+    }
+    render() {
+        const { count } = this.state
+        return (
+            <h2 onMouseOver={this.increment}>
+                {count}</h2>
+        );
+    }
+}
+
+export default HoverCounter;
+
+
+Program-39  With HOC
+*********************
+clickCounter.js
+---------------
+import React, { Component } from 'react'
+import UpdatedComponent from './withCounter';
+class Clickcounter extends Component {
+    render() {
+        const { count, incrementCount } = this.props;
+        return (
+            <button onClick={incrementCount}> Clicked {count} Times</button>
+        )
+    }
+}
+export default UpdatedComponent(Clickcounter);
+
+hovercounter.js
+--------------
+import React, { Component } from 'react'
+import UpdatedComponent from './withCounter';
+export class Hovercounter extends Component {
+    render() {
+        const { count, incrementCount } = this.props;
+        return (
+            <div>
+                <h2 onMouseOver={incrementCount}>Hovered {count} Times</h2>
+            </div>
+        )
+    }
+}
+export default UpdatedComponent(Hovercounter);
+
+
+withcounter.js
+--------------
+import React from 'react';
+
+const UpdatedComponent = OriginalComponent => {
+    class newComponent extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                count: 0
+            }
+        }
+        incrementCount = () => {
+            this.setState(prevState => {
+                return { count: prevState.count + 1 }
+            })
+        }
+        render() {
+            return <OriginalComponent count={this.state.count} incrementCount={this.incrementCount} />
+        }
+    }
+    return newComponent;
+}
+export default UpdatedComponent;
+
+
+
+
+Program-40  CRUD
+******************
+import React from 'react';
+
+class Crud extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            employees: [
+                { eId: 101, name: "sanjay", sal: 5000 },
+                { eId: 104, name: "deepak", sal: 8000 },
+                { eId: 103, name: "ranjan", sal: 7000 },
+                { eId: 102, name: "manoj", sal: 9000 }
+            ],
+            newEmp: { eId: '', name: '', sal: 0 }
+        }
+    }
+    deleteRow = (ind) => {
+        this.state.employees.splice(ind, 1);
+        this.setState({ employees: this.state.employees })
+    }
+    viewRow = (emp) => {
+        alert(`${emp.eId} ${emp.name}  ${emp.sal}`)
+    }
+    updateId = (e) => {
+        //this.state.newEmp.eId = e.target.value;
+        this.setState({ newEmp: this.state.newEmp.id = e.target.value })
+        this.setState({ newEmp: this.state.newEmp })
+    }
+    updateName = (e) => {
+        this.state.newEmp.name = e.target.value;
+        this.setState({ newEmp: this.state.newEmp })
+    }
+    updateSal = (e) => {
+        this.state.newEmp.sal = e.target.value;
+        this.setState({ newEmp: this.state.newEmp })
+    }
+    addRow = () => {
+        this.state.employees.push(this.state.newEmp);
+        this.setState({ employees: this.state.employees })
+        //this.setState({ newEmp: { eId: '', name: '', sal: 0 } })
+    }
+
+    render() {
+        return (
+            <div>
+                <table border='1' align='center' width='50%'>
+                    <tr>
+                        <th>Sl No.</th>
+                        <th>Emp Id</th>
+                        <th>Name</th>
+                        <th>Salary</th>
+                        <th>Action</th>
+                    </tr>
+                    {this.state.employees.map((emp, ind) => (
+                        <tr key={emp.eId}>
+                            <td>{ind}</td>
+                            <td>{emp.eId}</td>
+                            <td>{emp.name}</td>
+                            <td>{emp.sal}</td>
+                            <td>
+                                <button onClick={() => this.deleteRow(ind)}>Delete</button>
+                                <button onClick={() => this.viewRow(emp)}>View</button>
+                            </td>
+                        </tr>
+                    ))}
+                </table>
+
+                Emp Id:
+                    <input onKeyUp={this.updateId}></input> <br></br><br></br>
+                Name:
+                    <input onKeyUp={this.updateName}></input> <br></br><br></br>
+                Salary:
+                    <input onKeyUp={this.updateSal}></input> <br></br><br></br>
+
+                <button onClick={this.addRow}>Add a new employee</button>
+
+            </div>
+        );
+    }
+}
+export default Crud;
+
+
+
+Program-41 (Constructor)
+*************************
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {favoritecolor: "red"};
+  }
+  render() {
+    return (
+      <h1>My Favorite Color is {this.state.favoritecolor}</h1>
+    );
+  }
+}
+
+
+
+
+Program-42 (getDerivedStateFromProps)
+******************************************
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {favoritecolor: "red"};
+  }
+  static getDerivedStateFromProps(props, state) {
+    return {favoritecolor: props.favcol };
+  }
+  render() {
+    return (
+      <h1>My Favorite Color is {this.state.favoritecolor}</h1>
+    );
+  }
+}
+
+
+
+program-43 (componentDidMount)
+******************************
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {favoritecolor: "red"};
+  }
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({favoritecolor: "yellow"})
+    }, 1000)
+  }
+  render() {
+    return (
+      <h1>My Favorite Color is {this.state.favoritecolor}</h1>
+    );
+  }
+}
+
+
+
+program-44 getDerivedStateFromProps()
+*************************************
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {favoritecolor: "red"};
+  }
+  static getDerivedStateFromProps(props, state) {
+    return {favoritecolor: props.favcol };
+  }
+  changeColor = () => {
+    this.setState({favoritecolor: "blue"});
+  }
+  render() {
+    return (
+      <div>
+      <h1>My Favorite Color is {this.state.favoritecolor}</h1>
+      <button type="button" onClick={this.changeColor}>Change color</button>
+      </div>
+    );
+  }
+}
+
+
+Program-45 (shouldComponentUpdate)
+**********************************
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {favoritecolor: "red"};
+  }
+  shouldComponentUpdate() {
+    return false;
+  }
+  changeColor = () => {
+    this.setState({favoritecolor: "blue"});
+  }
+  render() {
+    return (
+      <div>
+      <h1>My Favorite Color is {this.state.favoritecolor}</h1>
+      <button type="button" onClick={this.changeColor}>Change color</button>
+      </div>
+    );
+  }
+}
+
+
+
+Program-46 (getSnapshotBeforeUpdate)
+************************************
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {favoritecolor: "red"};
+  }
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({favoritecolor: "yellow"})
+    }, 1000)
+  }
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    document.getElementById("div1").innerHTML =
+    "Before the update, the favorite was " + prevState.favoritecolor;
+  }
+  componentDidUpdate() {
+    document.getElementById("div2").innerHTML =
+    "The updated favorite is " + this.state.favoritecolor;
+  }
+  render() {
+    return (
+      <div>
+        <h1>My Favorite Color is {this.state.favoritecolor}</h1>
+        <div id="div1"></div>
+        <div id="div2"></div>
+      </div>
+    );
+  }
+}
+
+
+
+program-47 (componentDidUpdate)
+*********************************
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {favoritecolor: "red"};
+  }
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({favoritecolor: "yellow"})
+    }, 1000)
+  }
+  componentDidUpdate() {
+    document.getElementById("mydiv").innerHTML =
+    "The updated favorite is " + this.state.favoritecolor;
+  }
+  render() {
+    return (
+      <div>
+      <h1>My Favorite Color is {this.state.favoritecolor}</h1>
+      <div id="mydiv"></div>
+      </div>
+    );
+  }
+}
+
+
+
+program-48 (componentWillUnmount)
+*********************************
+class Container extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {show: true};
+  }
+  delHeader = () => {
+    this.setState({show: false});
+  }
+  render() {
+    let myheader;
+    if (this.state.show) {
+      myheader = <Child />;
+    };
+    return (
+      <div>
+      {myheader}
+      <button type="button" onClick={this.delHeader}>Delete Header</button>
+      </div>
+    );
+  }
+}
+
+class Child extends React.Component {
+  componentWillUnmount() {
+    alert("The component named Header is about to be unmounted.");
+  }
+  render() {
+    return (
+      <h1>Hello World!</h1>
+    );
+  }
+}
+
+
+
+program-49  Addion using refs
+*****************************
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+export default class Test extends Component {
+    constructor(props) {
+        super(props)
+        this.myRef1 = React.createRef();
+        this.myRef2 = React.createRef();
+    }
+    add = () => {
+        let value_1 = parseInt(this.myRef1.current.value);
+        let value_2 = parseInt(this.myRef2.current.value);
+        alert(value_1 + value_2);
+    }
+    render() {
+        return (
+            <>
+                <input name="textbox1" ref={this.myRef1} type="text" />
+                <input name="textbox2" ref={this.myRef2} type="text" />
+                <button onClick={this.add}>Add</button>
+            </>
+        )
+    }
+
+}
+
+
+
+
+
+program-50 call back refs
+*************************
+import React, { Component } from 'react'
+export default class Test extends Component {
+    add = () => {
+        let val1 = parseInt(this.input1.value)
+        let val2 = parseInt(this.input2.value)
+        alert(val1 + val2)
+    }
+    render() {
+        return (
+            <div>
+                <input type="text" ref={(input) => { this.input1 = input }} />
+                <input type="text" ref={(input) => { this.input2 = input }} />
+                <button type="button" onClick={this.add}>Add</button>
+            </div>
+        )
+    }
+}
+
+
+
+program-  Ref Forwarding
+************************
+import React, { Component } from 'react'
+import FancyButton from '../FancyButton/FancyButton'
+
+export default class Test extends Component {
+    constructor(props) {
+        super(props)
+
+        this.myRef = React.createRef();
+    }
+    fun1 = () => {
+        console.log(this.myRef.current.className)
+        console.log(this.myRef.current.id)
+    }
+    render() {
+        return (
+            <div>
+                <FancyButton ref={this.myRef}>
+                    <div>button text</div>
+                </FancyButton>
+
+                <button onClick={this.fun1}>click me</button>
+            </div>
+        )
+    }
+}
+-------------------------------------
+import React from 'react';
+const FancyButton = React.forwardRef((props, ref) => (
+    <button ref={ref} className="FancyButton" id='btn1'>
+        {props.children}
+    </button>
+));
+export default FancyButton;
+
+
+
+
+
+program-51  Form Submit
+**********************
+import React from 'react';
+
+class MyForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { username: '' };
+    }
+    mySubmitHandler = (event) => {
+        event.preventDefault();
+        alert("You are submitting " + this.state.username);
+    }
+    myChangeHandler = (event) => {
+        this.setState({ username: event.target.value });
+    }
+    render() {
+        return (
+            <form onSubmit={this.mySubmitHandler}>
+                <h1>Hello {this.state.username}</h1>
+                <p>Enter your name, and submit:</p>
+                <input
+                    type='text'
+                    onChange={this.myChangeHandler}
+                />
+                <input type='submit' />
+                <input type='reset' value='clear' />
+            </form>
+        );
+    }
+}
+export default MyForm;
+
+
+
+Program-52 UnControlled Form Elements
+*************************************
+import React, { Component } from 'react';
+
+export default class Test extends Component {
+    constructor(props) {
+        super(props)
+        this.state = { 'userName': 'sanjay' };
+
+        this.myRef1 = React.createRef()
+    }
+    submitHandler = (e) => {
+        e.preventDefault();
+        console.log(this.myRef1.current.value);
+    }
+    render() {
+        return (
+            <div>
+                <form onSubmit={this.submitHandler}>
+                    <input ref={this.myRef1} defaultValue={this.state.userName} />
+                    <input type='submit' value='submit' />
+                </form>
+            </div>
+        )
+    }
+}
+
+
+Program-52 Controlled Form Elements
+*************************************
+
+import React, { Component } from 'react';
+
+export default class Test extends Component {
+    constructor(props) {
+        super(props)
+        this.state = { 'userName': 'sanjay' };
+
+        this.myRef1 = React.createRef()
+    }
+    changeHandler = (e) => {
+        this.setState({ [e.target.name]: e.target.value })
+    }
+    submitHandler = (e) => {
+        e.preventDefault();
+        console.log(this.state.userName);
+    }
+    render() {
+        return (
+            <div>
+                <div>name is: {this.state.userName}</div>
+                <form onSubmit={this.submitHandler}>
+                    <input name='userName' value={this.state.userName} onChange={this.changeHandler} />
+                    <input type='submit' value='submit' />
+                </form>
+            </div>
+        )
+    }
+}
+
+
+
+Program-53 Multiple input fields
+*******************************
+import React from 'react';
+
+class MyForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: '',
+            age: null,
+        };
+    }
+    mySubmitHandler = (event) => {
+        event.preventDefault();
+        alert("You are submitting " + this.state.username + " " + this.state.age);
+    }
+    myChangeHandler = (event) => {
+        let nam = event.target.name;
+        let val = event.target.value;
+        console.log(nam, val)
+        this.setState({ [nam]: val });
+    }
+    render() {
+        return (
+            <form onSubmit={this.mySubmitHandler}>
+                <h1>Hello {this.state.username} {this.state.age}</h1>
+                <p>Enter your name:</p>
+                <input
+                    type='text'
+                    name='username'
+                    onChange={this.myChangeHandler}
+                />
+                <p>Enter your age:</p>
+                <input
+                    type='text'
+                    name='age'
+                    onChange={this.myChangeHandler}
+                />
+                <input type='submit' />
+                <input type='reset' value='clear' />
+            </form>
+        );
+    }
+}
+export default MyForm;
+
+
+
+program-54  Form Validation while typing
+*****************************************
+import React from 'react';
+class MyForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      age: null,
+    };
+  }
+  myChangeHandler = (event) => {
+    let nam = event.target.name;
+    let val = event.target.value;
+    if (nam === "age") {
+      if (!Number(val)) {
+        alert("Your age must be a number");
+      }
+    }
+    this.setState({[nam]: val});
+  }
+  render() {
+    return (
+      <form>
+      <h1>Hello {this.state.username} {this.state.age}</h1>
+      <p>Enter your name:</p>
+      <input
+        type='text'
+        name='username'
+        onChange={this.myChangeHandler}
+      />
+      <p>Enter your age:</p>
+      <input
+        type='text'
+        name='age'
+        onChange={this.myChangeHandler}
+      />
+      </form>
+    );
+  }
+}
+export default MyForm;
+
+
+
+program-55  Form Validation while submitting
+*********************************************
+import React from 'react';
+
+class MyForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      age: null,
+    };
+  }
+  mySubmitHandler = (event) => {
+    event.preventDefault();
+    let age = this.state.age;
+    if (!Number(age)) {
+      alert("Your age must be a number");
+    }
+  }
+  myChangeHandler = (event) => {
+    let nam = event.target.name;
+    let val = event.target.value;
+    this.setState({[nam]: val});
+  }
+  render() {
+    return (
+      <form onSubmit={this.mySubmitHandler}>
+      <h1>Hello {this.state.username} {this.state.age}</h1>
+      <p>Enter your name:</p>
+      <input
+        type='text'
+        name='username'
+        onChange={this.myChangeHandler}
+      />
+      <p>Enter your age:</p>
+      <input
+        type='text'
+        name='age'
+        onChange={this.myChangeHandler}
+      />
+      <br/>
+      <br/>
+      <input type='submit' />
+      </form>
+    );
+  }
+}
+export default MyForm;
+
+
+
+Program-56 Error Message While Typing
+**************************************
+import React from 'react';
+
+class MyForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: '',
+            age: null,
+            nameErrorMsg: '',
+            ageErrorMsg: '',
+        };
+    }
+    myChangeHandler = (event) => {
+        let nam = event.target.name;
+        let val = event.target.value;
+        let err1= '';
+        let err2 = '';
+        if (nam === "username") {
+            if (val.length < 5) {
+                err1 = <strong>Your name must contain 5 chars</strong>;
+            }
+        }
+        if (nam === "age") {
+            if (val !== "" && !Number(val)) {
+                err2 = <strong>Your age must be a number</strong>;
+            }
+        }
+        this.setState({ nameErrorMsg: err1 });
+        this.setState({ ageErrorMsg: err2 });
+        this.setState({ [nam]: val });
+    }
+    render() {
+        return (
+            <form>
+                <h1>Hello {this.state.username} {this.state.age}</h1>
+                <p>Enter your name:</p>
+                <input
+                    type='text'
+                    name='username'
+                    onChange={this.myChangeHandler}
+                />
+                {this.state.nameErrorMsg}
+
+                <p>Enter your age:</p>
+                <input
+                    type='text'
+                    name='age'
+                    onChange={this.myChangeHandler}
+                />
+                {this.state.ageErrorMsg}
+            </form>
+        );
+    }
+}
+
+export default MyForm;
+
+
+
+Program-57 Error Message onSubmit
+*********************************
+import React from 'react';
+
+class MyForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: '',
+            age: null,
+            nameErrorMsg: '',
+            ageErrorMsg: '',
+        };
+    }
+    myChangeHandler = (event) => {
+        let nam = event.target.name;
+        let val = event.target.value;
+        this.setState({ [nam]: val });
+    }
+    mySubmitHandler = (event) => {
+        event.preventDefault();
+
+        let err1 = '';
+        let err2 = '';
+
+        if (this.state.username.length < 5) {
+            err1 = <strong>Your name mustcontain 5 chars</strong>;
+        }
+        if (this.state.age !== "" && !Number(this.state.age)) {
+            err2 = <strong>Your age must be a number</strong>;
+        }
+        this.setState({ nameErrorMsg: err1, ageErrorMsg: err2 });
+        //alert("You are submitting " + this.state.username + " " + this.state.age);
+    }
+    render() {
+        return (
+            <form onSubmit={this.mySubmitHandler}>
+                <h1>Hello {this.state.username} {this.state.age}</h1>
+                <p>Enter your name:</p>
+                <input
+                    type='text'
+                    name='username'
+                    onChange={this.myChangeHandler}
+                />
+                {this.state.nameErrorMsg}
+
+                <p>Enter your age:</p>
+                <input
+                    type='text'
+                    name='age'
+                    onChange={this.myChangeHandler}
+                />
+                {this.state.ageErrorMsg}
+
+                <input type="submit" />
+            </form>
+        );
+    }
+}
+export default MyForm;
+
+
+
+program-58 Load a Form With Default Values
+********************************************
+import React from 'react';
+
+class MyForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: 'sachin',
+            age: 35,
+            address: 'bang'
+        };
+    }
+    myChangeHandler = (event) => {
+        let nam = event.target.name;
+        let val = event.target.value;
+        this.setState({ [nam]: val });
+    }
+    mySubmitHandler = (event) => {
+        event.preventDefault();
+        alert(this.state.username + " " + this.state.age + " " + this.state.address);
+    }
+    render() {
+        return (
+            <form onSubmit={this.mySubmitHandler}>
+                <h2>Hello {this.state.username} age is {this.state.age}
+                    address is {this.state.address} </h2>
+                <p>Enter your name:</p>
+                <input
+                    type='text'
+                    name='username'
+                    onChange={this.myChangeHandler}
+                    value={this.state.username}
+                />
+                <p>Enter your age:</p>
+                <input
+                    type='text'
+                    name='age'
+                    onChange={this.myChangeHandler}
+                    value={this.state.age}
+                />
+                <p>Enter your Address:</p>
+                <textarea
+                    name='address'
+                    onChange={this.myChangeHandler}
+                    value={this.state.address} />
+                    
+                <br></br>
+                <input type="submit" />
+            </form>
+        );
+    }
+}
+export default MyForm;
+
+
+
+Program-59 DropDown
+*********************
+class MyForm extends React.Component {
+  import React, { Component } from 'react'
+
+export default class Test extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            mycar: 'Volvo'
+        };
+    }
+    changeHandler = (event) => {
+        this.setState({ mycar: event.target.value })
+    }
+    render() {
+        return (
+            <form>
+                <select value={this.state.mycar} onChange={this.changeHandler}>
+                    <option value="Ford">Ford</option>
+                    <option value="Volvo">Volvo</option>
+                    <option value="Fiat">Fiat</option>
+                    <option value="Maruti">Maruti</option>
+                    <option value="Tata">Tata</option>
+                </select>
+                <div>Selected Car: {this.state.mycar}</div>
+            </form>
+        );
+    }
+}
+
+}
+
+
+
+Program-60  Fetch() Example
+****************************
+import React, { Component } from 'react'
+
+export default class Test extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            users: []
+        }
+    }
+
+    fetchUsers = () => {
+        const myURL = 'https://jsonplaceholder.typicode.com/users';
+
+        fetch(myURL)
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                this.setState({ 'users': data })
+            });
+    }
+    componentDidMount() {
+        this.fetchUsers();
+    }
+    render() {
+        return (
+            <table className='table table-bordered table-striped'>
+                <thead>
+                    <tr>
+                        <th>userID</th>
+                        <th>name</th>
+                        <th>email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {this.state.users.map((user, ind) => {
+                        return (<tr key={ind}>
+                            <td>{user.id}</td>
+                            <td>{user.name}</td>
+                            <td>{user.email}</td>
+                        </tr>)
+                    })}
+                </tbody>
+            </table>
+        )
+    }
+}
+
+
+
+
+Program-60  HTTP CRUD using Axios
+***********************************
+import React, { Component } from "react";
+import Modal from "react-modal";
+import axios from "axios";
+import Swal from "sweetalert2";
+import "./Curd.css";
+
+export default class Curd extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      modalIsOpen: false,
+      isEdit: false,
+      users: [],
+      id: "",
+      name: "",
+      email: "",
+      address: "",
+      phone: "",
+    };
+  }
+  myChangeHandler = (event) => {
+    let nam = event.target.name;
+    let val = event.target.value;
+    this.setState({ [nam]: val });
+  };
+
+  mySubmitHandler = (event) => {
+    event.preventDefault();
+    let output = {};
+    output = {
+      name: this.state.name,
+      email: this.state.email,
+      phone: this.state.phone,
+      address: this.state.address,
+    };
+    if (this.state.isEdit) {
+      this.updateEmployees(output, this.state.id);
+    } else {
+      this.addEmployee(output);
+    }
+  };
+  fetchEmployees = () => {
+    const myURL = "http://localhost:4000/users";
+    axios.get(myURL).then((result) => {
+      this.setState({ users: result.data });
+    });
+  };
+
+  addEmployee(data) {
+    const myURL = "http://localhost:4000/users";
+    axios.post(myURL, data).then((response) => {
+      Swal.fire("Employee got added", "", "success");
+      this.closeModal();
+      this.fetchEmployees();
+    });
+  }
+
+  updateEmployees = (data, empId) => {
+    axios
+      .put(`http://localhost:4000/users/${empId}`, data)
+      .then((response) => {
+        Swal.fire("Employee got updated", "", "success");
+        this.closeModal();
+        this.fetchEmployees();
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  deleteEmployee = (empId) => {
+    axios.delete(`http://localhost:4000/users/${empId}`).then((result) => {
+      this.fetchEmployees();
+    });
+  };
+  componentDidMount() {
+    this.fetchEmployees();
+  }
+  openModal = () => {
+    this.setState({ modalIsOpen: true, isEdit: false });
+  };
+  openEditModal = (id, name, email, address, phone) => {
+    this.setState({
+      id: id,
+      name: name,
+      email: email,
+      address: address,
+      phone: phone,
+      isEdit: true,
+      modalIsOpen: true,
+    });
+  };
+  closeModal = () => {
+    this.setState({ modalIsOpen: false });
+  };
+  render() {
+    let nameValue;
+    if (this.state.isEdit) {
+      nameValue = this.state.name;
+    }
+    let emailValue;
+    if (this.state.isEdit) {
+      emailValue = this.state.email;
+    }
+    let addressValue;
+    if (this.state.isEdit) {
+      addressValue = this.state.address;
+    }
+    let phoneVlue;
+    if (this.state.isEdit) {
+      phoneVlue = this.state.phone;
+    }
+    return (
+      <div>
+        <div className="container">
+          <div className="table-responsive">
+            <div className="table-wrapper">
+              <div className="table-title">
+                <div className="row">
+                  <div className="col-sm-6">
+                    <h2 style={{textAlign : 'left'}}>
+                      Manage <b>Employees</b>
+                    </h2>
+                  </div>
+                  <div className="col-sm-6">
+                    <a
+                      className="btn btn-success"
+                      onClick={this.openModal}
+                      data-toggle="modal"
+                    >
+                      <GrAddCircle/>
+                      <span>Add New Employee</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <table className="table table-striped table-hover">
+                <thead>
+                  <tr>
+                    <th>ID </th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.state.users.map((user, ind) => {
+                    return (
+                      <tr key={user.id}>
+                        <td>{user.id}</td>
+                        <td>{user.name}</td>
+                        <td>{user.email}</td>
+                        <td>{user.address}</td>
+                        <td>{user.phone}</td>
+                        <td>
+                          <a
+                            className="edit"
+                            onClick={() =>
+                              this.openEditModal(
+                                user.id,
+                                user.name,
+                                user.email,
+                                user.address,
+                                user.phone
+                              )
+                            }
+                          >
+                            <AiFillEdit />
+                          </a>
+                          <a
+                            className="delete"
+                            href="/"
+                            onClick={() => this.deleteEmployee(user.id)}
+                          >
+                            <AiFillDelete />
+                          </a>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <Modal
+          isOpen={this.state.modalIsOpen}
+          onRequestClose={this.closeModal}
+          ariaHideApp={false}
+          contentLabel="Example Modal"
+        >
+          <button onClick={this.closeModal}>close</button>
+          <form onSubmit={this.mySubmitHandler}>
+            <div className="modal-header">
+              <h4 className="modal-title">Add Employee</h4>
+            </div>
+            <div className="modal-body">
+              <div className="form-group">
+                <label>Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  onChange={this.myChangeHandler}
+                  className="form-control"
+                  value={nameValue}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label>Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  onChange={this.myChangeHandler}
+                  className="form-control"
+                  value={emailValue}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label>Phone</label>
+                <input
+                  type="number"
+                  name="phone"
+                  onChange={this.myChangeHandler}
+                  className="form-control"
+                  value={phoneVlue}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label>Address</label>
+                <textarea
+                  name="address"
+                  onChange={this.myChangeHandler}
+                  className="form-control"
+                  value={addressValue}
+                  required
+                ></textarea>
+              </div>
+            </div>
+            <div className="modal-footer">
+              <input
+                type="button"
+                className="btn btn-default"
+                onClick={this.closeModal}
+                data-dismiss="modal"
+                value="Cancel"
+              />
+              <input type="submit" className="btn btn-info" value="Save" />
+            </div>
+          </form>
+        </Modal>
+      </div>
+    );
+  }
+}
+
+
+program: axios & async-await
+****************************
+import React, { Component } from 'react';
+import axios from 'axios';
+
+export default class Test extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            users: []
+        }
+    }
+    async fetchUsers() {
+        try {
+            let response = await axios.get('https://jsonplaceholder.typicode.com/users');
+            this.setState({ users: response.data })
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+    componentDidMount() {
+        this.fetchUsers()
+    }
+    render() {
+        return (
+            <table className='table table-bordered table-striped'>
+                <thead>
+                    <tr>
+                        <th>userID</th>
+                        <th>name</th>
+                        <th>email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {this.state.users.map((user, ind) => {
+                        return (<tr key={ind}>
+                            <td>{user.id}</td>
+                            <td>{user.name}</td>
+                            <td>{user.email}</td>
+                        </tr>)
+                    })}
+                </tbody>
+            </table>
+        )
+    }
+}
+
+
+
+
+
+
+program:61 Routing
+******************
+app.js
+------
+import { BrowserRouter } from 'react-router-dom';
+
+	<BrowserRouter>
+        <Header />
+        <Mynav />
+        <Center />
+        <Footer />
+      </BrowserRouter>
+	
+	
+center.js
+---------
+import { Switch, Route, } from "react-router-dom";
+
+<Switch>
+	<Route path="/" component={Productlist} exact />
+	<Route path="/products" component={Productlist} />
+	<Route path="/greet" component={Greet} />
+	<Route path="/http" component={Http} />
+	<Route component={NotFound} />
+</Switch>
+
+nav.js
+------
+<ul class="nav navbar-nav">
+	<li class="active"> 
+		<Link to="/products">Product</Link>
+	</li>
+    <li>
+		<Link to="/greet">greet</Link>
+	</li>                    
+	<li>
+		<Link to="/http">http</Link>
+	</li>
+	<li>
+		<Link to="/parent">parent</Link>
+	</li>
+</ul>
+
+
+program-62 useState Hook 
+************************
+import React, { Component } from 'react';
+
+export default class Demo1 extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            count: 0
+        };
+    }
+    incrementCount = () => {
+        this.setState({ count: this.state.count + 1 })
+    }
+    render() {
+        return (
+            <div>
+                <p>You clicked {this.state.count} times</p>
+                <button onClick={() => this.incrementCount()}>
+                    Click me
+            </button>
+            </div>
+        );
+    }
+}
+---------------------------
+import React, { useState } from 'react';
+export default function Demo1() {
+    // Declare a new state variable, which is "count"
+    const [count, setCount] = useState(0); // initial value for count is '0'
+
+    return (
+        <div>
+            <p>You clicked {count} times</p>
+            <button onClick={() => setCount(count + 1)}>
+                Click me
+            </button>
+        </div>
+    );
+}
+
+
+
+Program-63  useState with array data
+************************************
+import React, { useState } from 'react'
+
+export default function Test() {
+    const [employees, setEmployees] = useState([
+        { id: 101, name: 'sanjay', sal: 5000 },
+        { id: 102, name: 'yash', sal: 7000 },
+        { id: 103, name: 'suresh', sal: 6000 },
+    ]);
+
+    const [id, setId] = useState();
+    const [name, setName] = useState('');
+    const [sal, setSal] = useState();
+
+    function setDefaultValues() {
+        setId('');
+        setName('');
+        setSal('')
+    }
+    const deleteEmp = (ind) => {
+        employees.splice(ind, 1)
+        setEmployees([...employees])
+    }
+    const addEmployee = (event) => {
+        event.preventDefault();
+        let newObj = { "id": id, "name": name, "sal": sal };
+        setEmployees([...employees, newObj])
+        setDefaultValues();
+    }
+
+    return (
+        <>
+            <table className='table table-bordered table-striped table-responsive'>
+                <thead>
+                    <tr>
+                        <th>eid</th>
+                        <th>name</th>
+                        <th>sal</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {employees.map((employee, ind) => {
+                        return (
+                            <tr>
+                                <td>{employee.id}</td>
+                                <td>{employee.name}</td>
+                                <td>{employee.sal}</td>
+                                <td>
+                                    <button className='btn btn-danger' onClick={() => deleteEmp(ind)}>DELETE</button>
+                                </td>
+                            </tr>
+                        )
+                    })}
+                </tbody>
+            </table>
+            <hr />
+            <form onSubmit={addEmployee}>
+                id : <input
+                    name="id"
+                    type="text"
+                    value={id}
+                    onChange={e => setId(e.target.value)}
+                /> <br /><br />
+
+                Name : <input
+                    name="name"
+                    type="text"
+                    value={name}
+                    onChange={e => setName(e.target.value)}
+                /> <br /><br />
+
+
+                Name : <input
+                    name="sal"
+                    type="text"
+                    value={sal}
+                    onChange={e => setSal(e.target.value)}
+                /> <br /><br />
+
+                <input type='submit' />
+            </form>
+
+        </>
+    );
+}
+
+
+
+program-64 useEffect
+********************
+import React, { useState, useEffect } from 'react'
+
+export default function Test() {
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        fetch("https://jsonplaceholder.typicode.com/users")
+            .then(response => response.json())
+            .then(result => setUsers(result));
+    }, []);
+
+    return (
+        <div>
+            <table className='table table-bordered table-striped table-responsive'>
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>name</th>
+                        <th>email</th>
+                        <th>phone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {users.map((user, ind) => {
+                        return (
+                            <tr>
+                                <td>{user.id}</td>
+                                <td>{user.name}</td>
+                                <td>{user.email}</td>
+                                <td>{user.phone}</td>
+                            </tr>
+                        )
+                    })}
+                </tbody>
+            </table>
+        </div>
+    );
+}
+
+
+
+program-65 custom Hook
+***********************
+fetchHook.js
+-----------
+import { useState, useEffect } from "react";
+export default function useFetch(url) {
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        fetch(url)
+            .then(response => response.json())
+            .then(data => setData(data));
+    }, []);
+
+    return data;
+}
+
+test.js
+-------
+import React, { useState, useEffect } from 'react'
+import useFetch from '../customhook/fetchHook';
+
+export default function Test() {
+    let users = useFetch('https://jsonplaceholder.typicode.com/users')
+    return (
+        <div>
+            <table className='table table-bordered table-striped table-responsive'>
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>name</th>
+                        <th>email</th>
+                        <th>phone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {users.map((user, ind) => {
+                        return (
+                            <tr>
+                                <td>{user.id}</td>
+                                <td>{user.name}</td>
+                                <td>{user.email}</td>
+                                <td>{user.phone}</td>
+                            </tr>
+                        )
+                    })}
+                </tbody>
+            </table>
+        </div>
+    );
+}
+
+
+program-66: Context Example
+************************
+userContext.js
+--------------
+import React from 'react';
+const userContext = React.createContext({});
+const UserProvider = userContext.Provider;
+const UserConsumer = userContext.Consumer;
+export { UserProvider, UserConsumer }
+
+
+app.js
+------
+import logo from './logo.svg';
+import './App.css';
+import ComponentC from './components/componentC/componentC';
+import { UserProvider } from './contexts/userContext';
+
+function App() {
+  return (
+    <div className="App">
+      <h1>This is app component</h1>
+      <UserProvider value="{name:'sanjay',age:22,sal:5000}">
+        <ComponentC />
+      </UserProvider>
+    </div>
+  );
+}
+export default App;
+
+
+componnetF.js
+-------------
+import React, { Component } from 'react'
+import { UserConsumer } from '../../contexts/userContext'
+
+export default class ComponentF extends Component {
+    render() {
+        return (
+            <UserConsumer>
+                {
+                    (userObj) => {
+                        return (
+                            <>
+                                <h2>This is F component</h2>
+                                <h3>data is {userObj}</h3>
+                            </>
+                        )
+                    }
+                }
+            </UserConsumer>
+        )
+    }
+}
+
+Program-67: use context in Function-component
+******************************************
+import React, { useContext } from 'react';
+import { userContext } from '../../contexts/userContext';
+
+export default function ComponentF() {
+    const userObj = useContext(userContext);
+    return (
+        <div>
+            this is F-component <br />
+            {userObj}
+        </div>
+    )
+}
+
+
+
+
+Program-68:  Redux example
+**************************
+1. create a new project 
+   create-react-app <projectName>
+   
+2. install redux & react-redux
+   npm install redux 
+   npm install react-redux
+
+3. Create Folders & Files for actions, reducers, store and components
+     store-->store.js
+	 actions-->actions.js
+	 reducers-->reducers.js
+	 components-->addToDo.js , toDoList.js , Todo.js
+   
+4. create Store (store.js)
+   
+   import { createStore } from 'redux';
+   import todoApp from '../reducers/reducers';
+   
+   let mystore = createStore(todoApp);
+   export default mystore;
+   
+   
+5. Create Actions (actions.js)
+
+   export const ADD_TODO = 'ADD_TODO';
+	let nextTodoId = 0;
+	export function addTodo(text) {
+	   return {
+		  type: ADD_TODO,
+		  id: nextTodoId++,
+		  text
+	   };
+	}
+	
+6. Create Reducers (reducers.js)
+
+	import { combineReducers } from 'redux'
+	import { ADD_TODO } from '../actions/actions'
+
+	function todo(state, action) {
+		switch (action.type) {
+			case ADD_TODO:
+				return {
+					id: action.id,
+					text: action.text,
+				}
+			default:
+				return state
+		}
+	}
+	function todos(state = [], action) {
+		switch (action.type) {
+			case ADD_TODO:
+				return [
+					...state,
+					todo(undefined, action)
+				]
+			default:
+				return state
+		}
+	}
+	const todoApp = combineReducers({
+		todos
+	})
+	export default todoApp;
+
+
+7. Provide Store (index.js)
+	
+	import { Provider } from 'react-redux';	
+	import mystore from './store/store'
+	
+	ReactDOM.render(
+	  <React.StrictMode>
+		<Provider store={mystore}>
+		  <App />
+		</Provider>
+	  </React.StrictMode>,
+	  document.getElementById('root')
+	);
+
+8. Root Component (App.js)
+
+-Only the root component should be aware of  redux. 
+-The important part to notice is the connect function which is used for connecting our root component App to the store.
+
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { addTodo } from './actions/actions'
+
+import AddTodo from './components/AddTodo.js'
+import TodoList from './components/TodoList.js'
+
+class App extends Component {
+   render() {
+      const { dispatch, visibleTodos } = this.props
+      
+      return (
+         <div>
+            <AddTodo onAddClick = {text =>dispatch(addTodo(text))} />
+            <TodoList todos = {visibleTodos}/>
+         </div>
+      )
+   }
+}
+function select(state) {
+   return {
+      visibleTodos: state.todos
+   }
+}
+export default connect(select)(App);
+
+9. Create other Components (AddTodo.js, Todo.js , TodoList.js)
+	
+	import React, { Component } from 'react';
+	export default class AddTodo extends Component {
+	   render() {
+		  return (
+			 <div>
+				<input type = 'text' ref = 'input' />
+					
+				<button onClick = {(e) => this.handleClick(e)}>
+				   Add
+				</button>
+			 </div>
+		  )
+	   }
+	   handleClick(e) {
+		  const node = this.refs.input
+		  const text = node.value.trim()
+		  this.props.onAddClick(text)
+		  node.value = ''
+	   }
+	}
+ -------------------------------------------------------
+ import React, { Component } from 'react';
+	export default class Todo extends Component {
+		render() {
+			return (
+				<li>
+					{this.props.text}
+				</li>
+			)
+		}
+	}
+----------------------------------------------------------
+import React, { Component } from 'react'
+import Todo from './Todo.js';
+
+export default class TodoList extends Component {
+    render() {
+        return (
+            <ul>
+                {this.props.todos.map(todo =>
+                    <Todo
+                        key={todo.id}
+                        {...todo}
+                    />
+                )}
+            </ul'>
+        )
+    }
+}
+	
+	
+
+

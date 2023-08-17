@@ -1,0 +1,74 @@
+open in browser ...take er 
+
+! to create the boiler plate in ide VS code 
+
+Alt+b - open browser 
+
+Alt+shift+B - open browser 
+live server 
+
+div*10{this is div - $}
+
+table>tr*50>td*{data-$}
+
+Alt+up arrow - move the block 
+
+ctrl+shift+K - delete line 
+
+---------------------------------------------------------------------------------------------------------
+
+https://flaviocopes.com/javascript-async-defer/
+
+https://drive.google.com/drive/u/0/mobile/folders/1WueI2bZToNLEbyAyOjBNJ-DGHYcNCLSF?usp=sharing
+https://drive.google.com/drive/folders/1Wuel2bZToNLEbyAyOjBNJ-DGHYcNCLSF?usp=sharing
+
+
+https://us02web.zoom.us/w/86155760464?tk=AscqfcfjeWexMFdZvGvakQtsfCUbdvHpyDWPe3Iy_Sc.DQMAAAAUD0iTUBZESEptcVpTVVQ3QzFnM2kyUTY5WWJBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&pwd=YmpOalV2ZXFUV0FGaGZRSnhOUitTQT09
+
+https://us02web.zoom.us/j/86036430646?pwd=QWdNQmNnK0tIVjFwUEJ4M21xaHp6dz09
+
+---------------------------------------------------------------------------------------------------------
+
+https://us04web.zoom.us/j/4481335558?pwd=utlfLWzUhjrlh4tYAblUwmbWYdvdmf.1
+
+-----------------------------------------------------------------------------
+
+https://drive.google.com/drive/folders/1-OF27xEU0Oq0mWTVe8oGF6vpjwIyoLfk?usp=sharing
+
+-----------------------------------------------------------------------------
+https://codedcreatures.com/2020/03/06/absolute-vs-relative-paths-in-react/
+
+
+Freecodecamp 
+
+
+c2w-wop-combo
+
+
+service@hdfclife.com
+
+
+
+
+
+redux dev tool to be installed 
+
+
+
+
+
+
+1. Baby Games: RMB Knowledge Park
+2. Baby Games for One Year Olds
+3. Baby's Musical Hands
+4. Baby Joy Joy ABC game for kids
+5. Link4Fun Animal Books
+6. First Words for Baby
+7. Baby's Brilliant
+8. BabyFirst: Bedtime Lullabies
+9. Baby games for toddlers & kids
+10. Kids Doodle - Color & Draw
+
+
+
+
