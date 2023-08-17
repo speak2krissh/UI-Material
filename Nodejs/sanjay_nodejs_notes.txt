@@ -1,0 +1,137 @@
+Syllabus
+========
+-Node.JS - Get started
+-Node.js Process Model
+-Local Environment SetUp
+-Node.js Console - REPL
+-NPM
+-Modules: Create, Publish, Extend & Manage
+-Global Objects
+-CallBacks, Generators
+-Buffer & Streams
+-File System
+-Events (Event Loop,Event Emitter)
+-Http Tutorial: Create Server and Get Data
+-Promise Tutorial
+-Express Tutorial
+-MongoDB Tutorial
+
+
+
+What NodeJs is?
+===============
+-Node.js is a very powerful JavaScript-based platform.
+-it is server side runtime environment built on Google Chrome's JavaScript V8 Engine. 
+-It provides an event driven, non-blocking (asynchronous) I/O and cross-platform 
+runtime environment for building highly scalable server-side application using JavaScript.
+-It is used to develop I/O intensive web applications 
+-ex:video streaming sites, real-time chat application, Game servers and other web applications. 
+
+How NodeJs works
+================
+-In the traditional web server model, each request is handled by a dedicated thread from the thread pool.
+ If no thread is available in the thread pool at any point of time then the request waits 
+ till the next available thread. 
+-Dedicated thread executes a particular request and does not return to thread pool until it completes the execution and returns a response.
+
+-All the user requests will be handled by a single thread and all the I/O work or long running job 
+is performed asynchronously for a particular request. 
+this single thread doesn't have to wait for the request to complete and is free to handle the next request. 
+-When asynchronous I/O work completes then it processes the request further and sends the response.
+-An event loop is constantly watching for the events to be raised for an asynchronous job and executing 
+callback function when the job completes. 
+-Internally, Node.js uses libev for the event loop which in turn uses internal C++ thread pool to provide asynchronous I/O.
+
+
+REPL
+====
+-Node.js comes with virtual environment called REPL.
+-REPL stands for Read-Eval-Print-Loop.
+-It is a quick and easy way to test simple Node.js/JavaScript code.
+-To launch the REPL (Node shell), open command prompt and type 'node'
+
+REPL Command		Description
+--------------------------------
+.help				Display help on all the commands
+tab Keys			Display the list of all commands.
+Up/Down Keys		See previous commands applied in REPL.
+.save filename		Save current Node REPL session to a file.
+.load filename		Load the specified file in the current Node REPL session.
+ctrl + c			Terminate the current command.
+ctrl + c (twice)	Exit from the REPL.
+ctrl + d			Exit from the REPL.
+.break				Exit from multiline expression.
+.clear				Exit from multiline expression.
+
+
+
+Core Modules
+============
+http-launch a server,send requests
+https-launch a SSL server
+fs-work with the filee system
+path-handles path elegantly
+url-url module includes methods for URL resolution and parsing.
+querystring-querystring module includes methods to deal with query string.
+os-Get OS information
+events-working with events
+util-util module includes utility functions useful for programmers.
+
+
+npm Install
+==========
+npm i nodemon 			 	--> helps during development and production dependencies
+npm i nodemon --save  		--> helps during development and production dependencies
+npm i nodemon --save-dev  	--> helps during development not in production
+
+
+
+Nodemon
+=======
+-Nodemon is a utility that will monitor for any changes in your source and automatically restart your server. Perfect for development. 
+Install it using npm. Just use nodemon instead of node to run your code, 
+and now your process will automatically restart when your code changes.
+
+
+Express.JS
+==========
+-Express is a minimal and flexible Node.js web application framework that provides a robust 
+set of features for web and mobile applications.
+-a framework is a set of helper functions,tools and rules that help us to build our application.
+-Alternatives to Express.js are 'Vanilla Node.js','koa','sails.js'
+-
+
+
+Debug NodeJs
+=============
+1. Node-inspector
+	a. npm install -g node-inspector
+	b. node-debug app.js
+	
+2. Debugging natively
+  a. node debug your-script.js
+  b. use debugger;  in a code line you want
+  
+CallBacks
+=========
+-Callback is an asynchronous equivalent for a function. 
+-A callback function is called at the completion of a given task. 
+-All the APIs of Node are written in such a way that they support callbacks.
+
+  
+EventEmitter Properties and Methods
+===================================
+addListener()-			Adds the specified listener
+defaultMaxListeners-	Sets the maximum number of listeners allowed for one event. Default is 10
+emit()					Call all the listeners registered with the specified name
+eventNames()			Returns an array containing all registered events
+getMaxListeners()		Returns the maximum number of listeners allowed for one event
+listenerCount()			Returns the number of listeners with the specified name
+listeners()				Returns an array of listeners with the specified name
+on()					Adds the specified listener
+once()					Adds the specified listener once. When the specified listener has been executed, the listener is removed
+prependListener()		Adds the specified listener as the first event with the specified name
+prependOnceListener()	Adds the specified listener as the first event with the specified name, once. When the specified listener has been executed, the listener is removed
+removeAllListeners()	Removes all listeners with the specified name, or ALL listeners if no name is specified
+removeListener()		Removes the specified listener with the specified name
+setMaxListeners()		Sets the maximum number of listeners allowed for one event. Default is 10
